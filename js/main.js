@@ -52,7 +52,8 @@ function showchatbotmsg(chatbotmsg) {
 
 function chatbotvoice(message) {
     const speech = new SpeechSynthesisUtterance();
-    speech.text = "Sorry,This is test message";
+    selectCorrectAnswer(speech); 
+  //  speech.text = "Sorry,This is test message";
     if (message.includes('who are you')) {
         let finalresult = intro[Math.floor(Math.random() * intro.length)];
         speech.text = finalresult;
@@ -61,7 +62,7 @@ function chatbotvoice(message) {
         let finalresult = help[Math.floor(Math.random() * help.length)];
         speech.text = finalresult;
     }
-    if (message.includes('Why should I follow fit?')) {
+    if (message.includes('why should I follow fit')) {
         let finalresult = q1[Math.floor(Math.random() * q1.length)];
         speech.text = finalresult;
     }
@@ -192,6 +193,7 @@ recognition.onresult = function (e) {
     let transcript = e.results[resultIndex][0].transcript;
     chatareamain.appendChild(showusermsg(transcript));
     chatbotvoice(transcript);
+    selectAnswer(transcript);
     console.log(transcript);
 }
 recognition.onend = function () {
@@ -235,7 +237,117 @@ mic.addEventListener("click", function () {
   }
   */
 
+  function selectAnswer(massge){
+    let userQuestions = massge;
+    const userQuestionsArray = userQuestions.split(" ");
+    console.log(userQuestionsArray.length);
+    console.log(userQuestionsArray[0]);
+
+    if(userQuestionsArray.length<10){
+        let i = 0;
+        let p = 0;
+        let q = 0;
+        const countArray=[];
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch("what is what is what is your name",j);
+            countArray[i] = count;
+            console.log(countArray[i]);
+            i++;
+        }
+        console.log(countArray);
+        const sum1 = countArray.reduce(add, 0);
+       console.log(sum1);
+
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch("how is how is how is your name",j);
+            countArray[p] = count;
+            console.log(countArray[p]);
+            p++;
+        }
+       console.log(countArray);
+        const sum2 = countArray.reduce(add, 0);
+       console.log(sum2);
+
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch("why is why is why is your name",j);
+            countArray[q] = count;
+            console.log(countArray[q]);
+            q++;
+        }
+       console.log(countArray);
+        const sum3 = countArray.reduce(add, 0);
+       console.log(sum3);
+
+       const Point = [sum1,sum2,sum3];
+       const maxPoint = Point.sort(function(a,b){
+           return b-a
+       });
+
+       console.log(maxPoint);
+
+       detectQuestion(maxPoint[0], sum1, sum2, sum3);
 
 
+    }
+    if(3<=userQuestionsArray.length<6){
+
+    }
+    if(6<=userQuestionsArray.length<9){
+        
+    }
+    if(9<=userQuestionsArray.length<12){
+        
+    }
+    if(12<=userQuestionsArray.length<15){
+        
+    }
+    if(15<=userQuestionsArray.length<18){
+        
+    }
+    if(18<=userQuestionsArray.length){
+       
+    }
+    
+ }
+  function selectCorrectAnswer(speech){
+    speech.text = "Sorry,This is test message";
+
+  }
+
+  function stringSearch(string, pattern) {
+	let count = 0;
+	for (let i = 0; i < string.length; i++) {
+	  for (let j = 0; j < pattern.length; j++) {
+		if (pattern[j] !== string[i + j]) break;
+		if (j === pattern.length - 1) count++;
+	  }
+	}
+	return count;
+  }
+
+  function add(accumlator,a){
+    return accumlator + a;
+}
+
+function detectQuestion(maxValue, sum1, sum2, sum3){
+    let sum10 = sum1;
+    let sum20 = sum2;
+    let sum30 = sum3;
+    let value = maxValue;
+    switch(value){
+        case sum10 :
+            console.log("what is what is what is your name");
+        break;  
+        case sum20 :
+            console.log("how is how is how is your name");
+        break;   
+        case sum30 :
+            console.log("why is why is why is your name");
+        break;     
+    }
+}
 
 
