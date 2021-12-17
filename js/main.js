@@ -52,7 +52,8 @@ function showchatbotmsg(chatbotmsg) {
 
 function chatbotvoice(message) {
     const speech = new SpeechSynthesisUtterance();
-    selectCorrectAnswer(speech); 
+    const userSpeech = message
+    selectAnswer(speech,userSpeech); 
   //  speech.text = "Sorry,This is test message";
     if (message.includes('who are you')) {
         let finalresult = intro[Math.floor(Math.random() * intro.length)];
@@ -193,7 +194,6 @@ recognition.onresult = function (e) {
     let transcript = e.results[resultIndex][0].transcript;
     chatareamain.appendChild(showusermsg(transcript));
     chatbotvoice(transcript);
-    selectAnswer(transcript);
     console.log(transcript);
 }
 recognition.onend = function () {
@@ -237,7 +237,7 @@ mic.addEventListener("click", function () {
   }
   */
 
-  function selectAnswer(massge){
+  function selectAnswer(speech,massge){
     let userQuestions = massge;
     const userQuestionsArray = userQuestions.split(" ");
     console.log(userQuestionsArray.length);
@@ -247,48 +247,85 @@ mic.addEventListener("click", function () {
         let i = 0;
         let p = 0;
         let q = 0;
+        let loop;
+        let set1 = new Array(0, "why should I follow FIT");
+        let set2 = new Array(0, " what is what your name");
+        let set3 = new Array(0, "why is use my age");
+        console.log(set1);
+        console.log(set2);
+        console.log(set3);
+/*        let set1 = {
+            sum1 : 0,
+            questio1 : "what is what is what is your name"
+        }
+        let set2 = {
+            sum2 : 0,
+            questio2 : "is how is how is how your name"
+        }
+        let set3 = {
+            sum3 : 0,
+            questio3 : "why is why is why is your name"
+        }
+*/
         const countArray=[];
         for(j of userQuestionsArray){
             let count = 0;
-            count = stringSearch("what is what is what is your name",j);
+            count = stringSearch(set1[1],j);
             countArray[i] = count;
             console.log(countArray[i]);
             i++;
         }
         console.log(countArray);
-        const sum1 = countArray.reduce(add, 0);
-       console.log(sum1);
+        set1[0] = countArray.reduce(add, 0);
+       console.log(set1[0]);
 
         for(j of userQuestionsArray){
             let count = 0;
-            count = stringSearch("how is how is how is your name",j);
+            count = stringSearch(set2[1],j);
             countArray[p] = count;
             console.log(countArray[p]);
             p++;
         }
        console.log(countArray);
-        const sum2 = countArray.reduce(add, 0);
-       console.log(sum2);
+        set2[0] = countArray.reduce(add, 0);
+       console.log(set2[0]);
 
         for(j of userQuestionsArray){
             let count = 0;
-            count = stringSearch("why is why is why is your name",j);
+            count = stringSearch(set3[1],j);
             countArray[q] = count;
             console.log(countArray[q]);
             q++;
         }
        console.log(countArray);
-        const sum3 = countArray.reduce(add, 0);
-       console.log(sum3);
+        set3[0] = countArray.reduce(add, 0);
+       console.log(set3[0]);
 
-       const Point = [sum1,sum2,sum3];
+       const Point = [set1[0],set2[0],set3[0]];
        const maxPoint = Point.sort(function(a,b){
            return b-a
        });
 
-       console.log(maxPoint);
+       
 
-       detectQuestion(maxPoint[0], sum1, sum2, sum3);
+       const objectArray = new Array(set1, set2, set3);
+       
+       if(maxPoint[0] < 3){
+        speech.text = "Sorry,This is test message";  
+       }
+       else{
+        for(loop = 0; loop < objectArray.length; loop++){
+            if(maxPoint[0]==objectArray[loop][0]){
+                console.log(objectArray[loop][1]);
+                speech.text = "Do you asked" + " " + objectArray[loop][1];
+            }
+        }
+       }
+
+
+       
+       
+       
 
 
     }
@@ -310,12 +347,12 @@ mic.addEventListener("click", function () {
     if(18<=userQuestionsArray.length){
        
     }
-    
- }
-  function selectCorrectAnswer(speech){
-    speech.text = "Sorry,This is test message";
 
-  }
+}
+ 
+
+
+  
 
   function stringSearch(string, pattern) {
 	let count = 0;
@@ -332,22 +369,38 @@ mic.addEventListener("click", function () {
     return accumlator + a;
 }
 
-function detectQuestion(maxValue, sum1, sum2, sum3){
-    let sum10 = sum1;
-    let sum20 = sum2;
-    let sum30 = sum3;
+
+/*
+function detectQuestion( lastobject){
+    let newArr = [...lastobject];
+
+//    const peraObject = new Array;
+  //  console.log(newArr);
+ //   console.log(peraObject);
+  //  const keys = Object.keys(lastArray);
+ //   const values = Object.values(keys);
+
+   /* for(var i=0;i<lastArray.length;i++){
+        console.log(lastArray[i]);
+    }
+
+*/ 
+/*    let sum10 = lastArray.set1.sum1;
+    let sum20 = lastArray.set2.sum2;
+    let sum30 = lastArray.set3.sum3;
     let value = maxValue;
     switch(value){
         case sum10 :
-            console.log("what is what is what is your name");
-        break;  
+            console.log(lastArray.set1.questio1);
+            break  
         case sum20 :
-            console.log("how is how is how is your name");
-        break;   
+            console.log(lastArray.set2.questio2);
+            break
         case sum30 :
-            console.log("why is why is why is your name");
-        break;     
+            console.log(lastArray.set3.questio3);
+            break
     }
+   
 }
-
+*/
 
