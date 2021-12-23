@@ -50,6 +50,18 @@ function showchatbotmsg(chatbotmsg) {
     return chatareaouter;
 }
 
+
+
+/*function showRightAnswerchatbotmsg(newSpeech,answer) {
+    answertSpeech = "Do you Asked" + newSpeech;
+    newAnswer=answer;     
+    let output = '';
+    output += ` <div class="chatarea-inner chatbot ">${answertSpeech}<div id="row"><div class="answer" type="button">yes</div> <div class="answer" type="button">NO</div></div></div>`;
+    chatareaouter.innerHTML += output;
+    return chatareaouter;
+  
+}*/
+
 function chatbotvoice(message) {
     const speech = new SpeechSynthesisUtterance();
     const userSpeech = message
@@ -182,6 +194,10 @@ function chatbotvoice(message) {
     window.speechSynthesis.speak(speech);
     chatareamain.appendChild(showchatbotmsg(speech.text));
 
+
+
+
+
     $(document).ready(function () {
         $('.scroll_div').animate({
             scrollTop: $('.scroll_div').get(0).scrollHeight
@@ -238,6 +254,7 @@ mic.addEventListener("click", function () {
   */
 
   function selectAnswer(speech,massge){
+    const newSpeech = speech;
     let userQuestions = massge;
     const userQuestionsArray = userQuestions.split(" ");
     console.log(userQuestionsArray.length);
@@ -317,8 +334,16 @@ mic.addEventListener("click", function () {
         for(loop = 0; loop < objectArray.length; loop++){
             if(maxPoint[0]==objectArray[loop][0]){
                 console.log(objectArray[loop][1]);
-                speech.text = "Do you asked" + " " + objectArray[loop][1];
+                var z=1;                
+                speech.text="Do you Asked,"+"  "+objectArray[loop][1]+"?" +"           " + "question No " + z + "     :Yes or No";
+                z++;   
+                oneQuestionAnswer(speech.text);
+                
             }
+     /*       if(loop == objectArray.length-1){
+                speech.text = "Another question"
+            }
+            */
         }
        }
 
@@ -329,7 +354,7 @@ mic.addEventListener("click", function () {
 
 
     }
-    if(3<=userQuestionsArray.length<6){
+/*    if(3<=userQuestionsArray.length<6){
 
     }
     if(6<=userQuestionsArray.length<9){
@@ -337,7 +362,7 @@ mic.addEventListener("click", function () {
     }
     if(9<=userQuestionsArray.length<12){
         
-    }
+    } */
     if(12<=userQuestionsArray.length<15){
         
     }
@@ -348,8 +373,42 @@ mic.addEventListener("click", function () {
        
     }
 
+  //  window.speechSynthesis.speak(speech);
+  //  chatareamain.appendChild(showRightAnswerchatbotmsg(speech.text));
+  //window.speechSynthesis.speak(speech);
+  //chatareamain.appendChild(chatRoboSujesun(speech.text));
+
 }
- 
+
+function oneQuestionAnswer(speech){
+        recognition.onresult = function (e) {
+        let resultIndex = e.resultIndex;
+        let transcript = e.results[resultIndex][0].transcript;
+        console.log("that is "+transcript);
+        speech = "hhhhhhhhhhhhhhhh"+ transcript;
+        answerQuestBot(transcript);
+        againStart();
+        return transcript;
+    }
+    
+  
+}  
+
+function answerQuestBot(yyy,speech){
+    
+    
+    switch(yyy){
+        case 'yes' :
+            console.log("It is a pre-degree program for those who wish to follow the Bachelor of Information Technology (BIT) at UCSC. Moreover, it will be an added qualification for those who seek higher education in ICT or employments related to IT")
+            return;
+        case 'no' :
+            console.log("this is txt massage");
+            return;
+        
+    }
+}
+
+  
 
 
   
@@ -404,3 +463,21 @@ function detectQuestion( lastobject){
 }
 */
 
+function chatRoboSujesun(){
+  
+    let output = '';
+    output += `<br><div class="chatarea-inner chatbot row"><div class="answer" type="button">YES</div> <div class="answer" type="button">NO</div></div>`;
+    chatareaouter.innerHTML += output;
+    return chatareaouter;
+
+}
+
+function againStart(){
+    recognition.onresult = function (e) {
+        let resultIndex = e.resultIndex;
+        let transcript = e.results[resultIndex][0].transcript;
+        chatareamain.appendChild(showusermsg(transcript));
+        chatbotvoice(transcript);
+        console.log(transcript);
+    }
+}
