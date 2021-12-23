@@ -50,9 +50,23 @@ function showchatbotmsg(chatbotmsg) {
     return chatareaouter;
 }
 
+
+
+/*function showRightAnswerchatbotmsg(newSpeech,answer) {
+    answertSpeech = "Do you Asked" + newSpeech;
+    newAnswer=answer;     
+    let output = '';
+    output += ` <div class="chatarea-inner chatbot ">${answertSpeech}<div id="row"><div class="answer" type="button">yes</div> <div class="answer" type="button">NO</div></div></div>`;
+    chatareaouter.innerHTML += output;
+    return chatareaouter;
+  
+}*/
+
 function chatbotvoice(message) {
     const speech = new SpeechSynthesisUtterance();
-    speech.text = "Sorry,This is test message";
+    const userSpeech = message
+    selectAnswer(speech,userSpeech); 
+  //  speech.text = "Sorry,This is test message";
     if (message.includes('who are you')) {
         let finalresult = intro[Math.floor(Math.random() * intro.length)];
         speech.text = finalresult;
@@ -61,7 +75,7 @@ function chatbotvoice(message) {
         let finalresult = help[Math.floor(Math.random() * help.length)];
         speech.text = finalresult;
     }
-    if (message.includes('Why should I follow fit?')) {
+    if (message.includes('why should I follow fit')) {
         let finalresult = q1[Math.floor(Math.random() * q1.length)];
         speech.text = finalresult;
     }
@@ -180,6 +194,10 @@ function chatbotvoice(message) {
     window.speechSynthesis.speak(speech);
     chatareamain.appendChild(showchatbotmsg(speech.text));
 
+
+
+
+
     $(document).ready(function () {
         $('.scroll_div').animate({
             scrollTop: $('.scroll_div').get(0).scrollHeight
@@ -235,7 +253,231 @@ mic.addEventListener("click", function () {
   }
   */
 
+  function selectAnswer(speech,massge){
+    const newSpeech = speech;
+    let userQuestions = massge;
+    const userQuestionsArray = userQuestions.split(" ");
+    console.log(userQuestionsArray.length);
+    console.log(userQuestionsArray[0]);
+
+    if(userQuestionsArray.length<10){
+        let i = 0;
+        let p = 0;
+        let q = 0;
+        let loop;
+        let set1 = new Array(0, "why should I follow FIT");
+        let set2 = new Array(0, " what is what your name");
+        let set3 = new Array(0, "why is use my age");
+        console.log(set1);
+        console.log(set2);
+        console.log(set3);
+/*        let set1 = {
+            sum1 : 0,
+            questio1 : "what is what is what is your name"
+        }
+        let set2 = {
+            sum2 : 0,
+            questio2 : "is how is how is how your name"
+        }
+        let set3 = {
+            sum3 : 0,
+            questio3 : "why is why is why is your name"
+        }
+*/
+        const countArray=[];
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch(set1[1],j);
+            countArray[i] = count;
+            console.log(countArray[i]);
+            i++;
+        }
+        console.log(countArray);
+        set1[0] = countArray.reduce(add, 0);
+       console.log(set1[0]);
+
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch(set2[1],j);
+            countArray[p] = count;
+            console.log(countArray[p]);
+            p++;
+        }
+       console.log(countArray);
+        set2[0] = countArray.reduce(add, 0);
+       console.log(set2[0]);
+
+        for(j of userQuestionsArray){
+            let count = 0;
+            count = stringSearch(set3[1],j);
+            countArray[q] = count;
+            console.log(countArray[q]);
+            q++;
+        }
+       console.log(countArray);
+        set3[0] = countArray.reduce(add, 0);
+       console.log(set3[0]);
+
+       const Point = [set1[0],set2[0],set3[0]];
+       const maxPoint = Point.sort(function(a,b){
+           return b-a
+       });
+
+       
+
+       const objectArray = new Array(set1, set2, set3);
+       
+       if(maxPoint[0] < 3){
+        speech.text = "Sorry,This is test message";  
+       }
+       else{
+        for(loop = 0; loop < objectArray.length; loop++){
+            if(maxPoint[0]==objectArray[loop][0]){
+                console.log(objectArray[loop][1]);
+                var z=1;                
+                speech.text="Do you Asked,"+"  "+objectArray[loop][1]+"?" +"           " + "question No " + z + "     :Yes or No";
+                z++;   
+                oneQuestionAnswer(speech.text);
+                
+            }
+     /*       if(loop == objectArray.length-1){
+                speech.text = "Another question"
+            }
+            */
+        }
+       }
 
 
+       
+       
+       
 
 
+    }
+/*    if(3<=userQuestionsArray.length<6){
+
+    }
+    if(6<=userQuestionsArray.length<9){
+        
+    }
+    if(9<=userQuestionsArray.length<12){
+        
+    } */
+    if(12<=userQuestionsArray.length<15){
+        
+    }
+    if(15<=userQuestionsArray.length<18){
+        
+    }
+    if(18<=userQuestionsArray.length){
+       
+    }
+
+  //  window.speechSynthesis.speak(speech);
+  //  chatareamain.appendChild(showRightAnswerchatbotmsg(speech.text));
+  //window.speechSynthesis.speak(speech);
+  //chatareamain.appendChild(chatRoboSujesun(speech.text));
+
+}
+
+function oneQuestionAnswer(speech){
+        recognition.onresult = function (e) {
+        let resultIndex = e.resultIndex;
+        let transcript = e.results[resultIndex][0].transcript;
+        console.log("that is "+transcript);
+        speech = "hhhhhhhhhhhhhhhh"+ transcript;
+        answerQuestBot(transcript);
+        againStart();
+        return transcript;
+    }
+    
+  
+}  
+
+function answerQuestBot(yyy,speech){
+    
+    
+    switch(yyy){
+        case 'yes' :
+            console.log("It is a pre-degree program for those who wish to follow the Bachelor of Information Technology (BIT) at UCSC. Moreover, it will be an added qualification for those who seek higher education in ICT or employments related to IT")
+            return;
+        case 'no' :
+            console.log("this is txt massage");
+            return;
+        
+    }
+}
+
+  
+
+
+  
+
+  function stringSearch(string, pattern) {
+	let count = 0;
+	for (let i = 0; i < string.length; i++) {
+	  for (let j = 0; j < pattern.length; j++) {
+		if (pattern[j] !== string[i + j]) break;
+		if (j === pattern.length - 1) count++;
+	  }
+	}
+	return count;
+  }
+
+  function add(accumlator,a){
+    return accumlator + a;
+}
+
+
+/*
+function detectQuestion( lastobject){
+    let newArr = [...lastobject];
+
+//    const peraObject = new Array;
+  //  console.log(newArr);
+ //   console.log(peraObject);
+  //  const keys = Object.keys(lastArray);
+ //   const values = Object.values(keys);
+
+   /* for(var i=0;i<lastArray.length;i++){
+        console.log(lastArray[i]);
+    }
+
+*/ 
+/*    let sum10 = lastArray.set1.sum1;
+    let sum20 = lastArray.set2.sum2;
+    let sum30 = lastArray.set3.sum3;
+    let value = maxValue;
+    switch(value){
+        case sum10 :
+            console.log(lastArray.set1.questio1);
+            break  
+        case sum20 :
+            console.log(lastArray.set2.questio2);
+            break
+        case sum30 :
+            console.log(lastArray.set3.questio3);
+            break
+    }
+   
+}
+*/
+
+function chatRoboSujesun(){
+  
+    let output = '';
+    output += `<br><div class="chatarea-inner chatbot row"><div class="answer" type="button">YES</div> <div class="answer" type="button">NO</div></div>`;
+    chatareaouter.innerHTML += output;
+    return chatareaouter;
+
+}
+
+function againStart(){
+    recognition.onresult = function (e) {
+        let resultIndex = e.resultIndex;
+        let transcript = e.results[resultIndex][0].transcript;
+        chatareamain.appendChild(showusermsg(transcript));
+        chatbotvoice(transcript);
+        console.log(transcript);
+    }
+}

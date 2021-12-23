@@ -299,6 +299,28 @@
 
 .chat_bot .chatbot-area .chatarea-inner{float: left;}
 
+.row{
+    border: #000 2px solid;
+    margin: 0px 11px -35px 50px;
+    float: right;
+    position: relative;
+    width: 95px;
+    text-align: center;
+
+}
+
+.answer{
+    margin: 2px;
+    padding: 2px 0px 0px 2px;
+    width: 37px;
+    height: 27px;
+    border: #000 2px solid;
+    cursor: pointer;
+    background: #666;
+    border-radius: 26%;
+    display: inline-block;
+}
+
 /*
 
 @media screen and (max-width:700px){
