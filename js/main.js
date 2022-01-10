@@ -59,151 +59,145 @@ function autoScroll(){
     });
 }
 
-
-
-/*function showRightAnswerchatbotmsg(newSpeech,answer) {
-    answertSpeech = "Do you Asked" + newSpeech;
-    newAnswer=answer;     
-    let output = '';
-    output += ` <div class="chatarea-inner chatbot ">${answertSpeech}<div id="row"><div class="answer" type="button">yes</div> <div class="answer" type="button">NO</div></div></div>`;
-    chatareaouter.innerHTML += output;
-    return chatareaouter;
-  
-}*/
-
 function chatbotvoice(message) {
-
     const userSpeech = message
-    selectAnswer(speech, userSpeech);
+
     //  speech.text = "Sorry,This is test message";
     if (message.includes('who are you')) {
         let finalresult = intro[Math.floor(Math.random() * intro.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how can help me' || 'can you help me' || 'help me')) {
+    else if (message.includes('how can help me' || 'can you help me' || 'help me')) {
         let finalresult = help[Math.floor(Math.random() * help.length)];
         speech.text = finalresult;
     }
-    if (message.includes('why should I follow fit')) {
+    else if (message.includes('why should I follow fit')) {
         let finalresult = q1[Math.floor(Math.random() * q1.length)];
         speech.text = finalresult;
     }
-    if (message.includes('what are the certificates that I can collect by following fit')) {
+    else if (message.includes('what are the certificates that I can collect by following fit')) {
         let finalresult = q2[Math.floor(Math.random() * q2.length)];
         speech.text = finalresult;
     }
-    if (message.includes('why should I follow fit before I register bit')) {
+    else if (message.includes('why should I follow fit before I register bit')) {
         let finalresult = q3[Math.floor(Math.random() * q3.length)];
         speech.text = finalresult;
     }
-    if (message.includes('can I use fit certificates to register other degree programmes')) {
+    else if (message.includes('can I use fit certificates to register other degree programmes')) {
         let finalresult = q4[Math.floor(Math.random() * q4.length)];
         speech.text = finalresult;
     }
-    if (message.includes('when can I collect the certificates')) {
+    else if (message.includes('when can I collect the certificates')) {
         let finalresult = q5[Math.floor(Math.random() * q5.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how can I find more details about the fit programme')) {
+    else if (message.includes('how can I find more details about the fit programme')) {
         let finalresult = q6[Math.floor(Math.random() * q6.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how long will it take to complete fit')) {
+    else if (message.includes('how long will it take to complete fit')) {
         let finalresult = q7[Math.floor(Math.random() * q7.length)];
         speech.text = finalresult;
+        againStart();
     }
-    if (message.includes('how can I make a complaint about fit programme')) {
+    else if (message.includes('how can I make a complaint about fit programme')) {
         let finalresult = q8[Math.floor(Math.random() * q8.length)];
         speech.text = finalresult;
     }
-    if (message.includes('is there any different between old and new syllabus')) {
+    else if (message.includes('is there any different between old and new syllabus')) {
         let finalresult = q9[Math.floor(Math.random() * q9.length)];
         speech.text = finalresult;
     }
-    if (message.includes('does ucsc conduct classes for fit')) {
+    else if (message.includes('does ucsc conduct classes for fit')) {
         let finalresult = q10[Math.floor(Math.random() * q10.length)];
         speech.text = finalresult;
     }
-    if (message.includes('where can I learn for fit')) {
+    else if (message.includes('where can I learn for fit')) {
         let finalresult = q11[Math.floor(Math.random() * q11.length)];
         speech.text = finalresult;
     }
-    if (message.includes('are these online courses enough to complete fit')) {
+    else if (message.includes('are these online courses enough to complete fit')) {
         let finalresult = q12[Math.floor(Math.random() * q12.length)];
         speech.text = finalresult;
     }
-    if (message.includes('should I go to institute to complete fit programme')) {
+    else if (message.includes('should I go to institute to complete fit programme')) {
         let finalresult = q13[Math.floor(Math.random() * q13.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how long will it take to get access to the virtual learning environment (FITVLE) after registration')) {
+    else if (message.includes('how long will it take to get access to the virtual learning environment (FITVLE) after registration')) {
         let finalresult = q14[Math.floor(Math.random() * q14.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how long does it take to know fit results')) {
+    else if (message.includes('how long does it take to know fit results')) {
         let finalresult = q15[Math.floor(Math.random() * q15.length)];
         speech.text = finalresult;
     }
-    if (message.includes('when will the practical test be held')) {
+    else if (message.includes('when will the practical test be held')) {
         let finalresult = q16[Math.floor(Math.random() * q16.length)];
         speech.text = finalresult;
     }
-    if (message.includes('do I have to pass to obtain the certificate')) {
+    else if (message.includes('do I have to pass to obtain the certificate')) {
         let finalresult = q17[Math.floor(Math.random() * q17.length)];
         speech.text = finalresult;
     }
-    if (message.includes('do I have to do online course quizzes')) {
+    else if (message.includes('do I have to do online course quizzes')) {
         let finalresult = q18[Math.floor(Math.random() * q18.length)];
         speech.text = finalresult;
     }
-    if (message.includes('does my practice quiz marks will be counted for the final grade')) {
+    else if (message.includes('does my practice quiz marks will be counted for the final grade')) {
         let finalresult = q19[Math.floor(Math.random() * q19.length)];
         speech.text = finalresult;
     }
-    if (message.includes('where can I take the fit exams')) {
+    else if (message.includes('where can I take the fit exams')) {
         let finalresult = q20[Math.floor(Math.random() * q20.length)];
         speech.text = finalresult;
     }
-    if (message.includes('if I am a repeat student (registered before 2021), do I have to follow the new syllabus when I take the next exam')) {
+    else if (message.includes('if I am a repeat student (registered before 2021), do I have to follow the new syllabus when I take the next exam')) {
         let finalresult = q21[Math.floor(Math.random() * q21.length)];
         speech.text = finalresult;
+        
     }
-    if (message.includes('do I have to do all e-Tests at once')) {
+    else if (message.includes('do I have to do all e-Tests at once')) {
         let finalresult = q22[Math.floor(Math.random() * q22.length)];
         speech.text = finalresult;
     }
-    if (message.includes('without doing fit, can I register for bit?')) {
+    else if (message.includes('without doing fit, can I register for bit?')) {
         let finalresult = q23[Math.floor(Math.random() * q23.length)];
         speech.text = finalresult;
     }
-    if (message.includes('I have done similar courses, can I get fit certificate')) {
+    else if (message.includes('I have done similar courses, can I get fit certificate')) {
         let finalresult = q24[Math.floor(Math.random() * q24.length)];
         speech.text = finalresult;
     }
-    if (message.includes('I have done courses similar to the fit programme. Can I register for bit')) {
+    else if (message.includes('I have done courses similar to the fit programme. Can I register for bit')) {
         let finalresult = q25[Math.floor(Math.random() * q25.length)];
         speech.text = finalresult;
+
     }
-    if (message.includes('other than fit qualifications, are there conditions to register bit')) {
+    else if (message.includes('other than fit qualifications, are there conditions to register bit')) {
         let finalresult = q26[Math.floor(Math.random() * q26.length)];
         speech.text = finalresult;
     }
-    if (message.includes('how to apply fit programme'||'how to register fit programme'||'how to apply programme'||'how to register programme')) {
+    else if (message.includes('how to apply fit programme'||'how to register fit programme'||'how to apply programme'||'how to register programme')) {
         let finalresult = q27[Math.floor(Math.random() * q27.length)];
         speech.text = finalresult;
     }
-    if (message.includes('when can I register for the fit')) {
+    else if (message.includes('when can I register for the fit')) {
         let finalresult = q28[Math.floor(Math.random() * q28.length)];
         speech.text = finalresult;
     }
-    if (message.includes('do I have to come to the ucsc to register')) {
+    else if (message.includes('do I have to come to the ucsc to register')) {
         let finalresult = q29[Math.floor(Math.random() * q29.length)];
         speech.text = finalresult;
     }
+    else{
+        selectAnswer(speech, userSpeech);
+    }
+    
     window.speechSynthesis.speak(speech);
     chatareamain.appendChild(showchatbotmsg(speech.text));
-
     autoScroll();
+    
 
 }
 
@@ -216,6 +210,7 @@ recognition.onresult = function (e) {
     chatbotvoice(transcript);
     console.log(transcript);
 }
+
 recognition.onend = function () {
     mic.style.background = "rgb(63,94,251)";
     mic.style.color = '#ffffff';
@@ -237,102 +232,18 @@ $(document).ready(() => {
 })
 
 
-
-/*function myFunction(){
-    document.getElementsByClassName("chat_bot").classList.toggle("show");
-
-}
-*/
-
-/*window.onclick = function(event) {
-    if (!event.target.matches('chat_bot_img')) {
-      var dropdowns = document.getElementsByClassName("chat_bot");
-
-        if (dropdowns.classList.contains('show')) {
-          dropdowns.classList.remove('show');
-        }
-      
-    }
-  }
-  */
-
 function selectAnswer(speech, massge) {
     const newSpeech = speech;
     let userQuestions = massge;
     const userQuestionsArray = userQuestions.split(" ");
     const strLength = userQuestionsArray.length;
+    console.log(strLength);
+    console.log(typeof(strLength));
     
 
-    /*   if(userQuestionsArray.length<10){
-           let i = 0;
-           let p = 0;
-           let q = 0;
-           let loop;
-           let set1 = new Array(0, "what is your name","It is a pre-degree program for those who wish to follow the Bachelor of Information Technology (BIT) at UCSC. Moreover, it will be an added qualification for those who seek higher education in ICT or employments related to IT");
-           let set2 = new Array(0, "your name is what","My name is FIT chat bot robot");
-           let set3 = new Array(0, "why is use my age","my uni is 100 in 2021");
-           console.log(set1);
-           console.log(set2);
-           console.log(set3);
-           const countArray=[];
-           for(j of userQuestionsArray){
-               let count = 0;
-               count = stringSearch(set1[1],j);
-               countArray[i] = count;
-               console.log(countArray[i]);
-               i++;
-           }
-           console.log(countArray);
-           set1[0] = countArray.reduce(add, 0);
-          console.log(set1[0]);
-   
-           for(j of userQuestionsArray){
-               let count = 0;
-               count = stringSearch(set2[1],j);
-               countArray[p] = count;
-               console.log(countArray[p]);
-               p++;
-           }
-          console.log(countArray);
-           set2[0] = countArray.reduce(add, 0);
-          console.log(set2[0]);
-   
-           for(j of userQuestionsArray){
-               let count = 0;
-               count = stringSearch(set3[1],j);
-               countArray[q] = count;
-               console.log(countArray[q]);
-               q++;
-           }
-          console.log(countArray);
-           set3[0] = countArray.reduce(add, 0);
-          console.log(set3[0]);
-   
-          const Point = [set1[0],set2[0],set3[0]];
-          const maxPoint = Point.sort(function(a,b){
-              return b-a
-          });
-   
-          
-   
-          const objectArray = new Array(set1, set2, set3);
-          
-          if(maxPoint[0] < 3){
-           speech.text = "Sorry,This is test message";  
-          }
-          else{
-           var z=1;   
-           for(loop = 0; loop < objectArray.length; loop++){
-               if(maxPoint[0]==objectArray[loop][0]){
-                   loopQuestion(objectArray[loop][1],z);
-                   oneQuestionAnswer(objectArray[loop][2]);
-                   z++;
-               }
-           }
-          }
-       }
-   */
+
     if (strLength  < 6) {
+        console.log("6");
         let i = 0;
         let p = 0;
         let loop;
@@ -376,7 +287,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1, set2);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -391,10 +302,11 @@ function selectAnswer(speech, massge) {
 
 
 
-
+        
 
     }
-    else if (6 <= strLength  < 9) {
+    else if (strLength  < 9) {
+        console.log("6 to 9");
         let i = 0;
         let p = 0;
         let q = 0;
@@ -562,7 +474,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1, set2, set3, set4, set5, set6, set6, set7, set8, set9, set10, set11);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -574,9 +486,10 @@ function selectAnswer(speech, massge) {
                 }
             }
         }
-
+        
     }
-    else if (9 <= strLength  < 12) {
+    else if (strLength  < 12) {
+        console.log("9 to 12");
         let i = 0;
         let p = 0;
         let q = 0;
@@ -758,7 +671,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1, set2, set3, set4, set5, set6, set7, set8, set9, set10, set11, set12);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -770,9 +683,11 @@ function selectAnswer(speech, massge) {
                 }
             }
         }
+        
 
     }
-    else if (12 <= strLength  < 15) {
+    else if (strLength  < 15) {
+        console.log("12 to 15");
         let i = 0;
         let p = 0;
         let loop;
@@ -814,7 +729,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1, set2);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -826,10 +741,11 @@ function selectAnswer(speech, massge) {
                 }
             }
         }
-
+        
 
     }
-    else if (15 <= strLength  < 18) {
+    else if (strLength  < 18) {
+        console.log("15 to 18");
         let i = 0;
         let loop;
         let set1 = new Array(0, "How long will it take to get access to the virtual learning environment (FITVLE) after registration? ", "It will take 3-4 working days( maximum 7days) after submitting your registration detail via FIT information system. If you have provided a valid email address, we will inform you as soon as we create an account in the online system. If it delays more than seven days, please contact the admin of the FITVLE (admin@fit.bit.lk). ");
@@ -855,7 +771,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -897,7 +813,7 @@ function selectAnswer(speech, massge) {
         const objectArray = new Array(set1);
 
         if (maxPoint[0] < 3) {
-            speech.text = "Sorry,This is test message";
+            speech.text = "sorry,I can't understanrd your speech";
         }
         else {
             var z = 1;
@@ -909,30 +825,21 @@ function selectAnswer(speech, massge) {
                 }
             }
         }
-
-
+        
+        
     }
 
 
-    //  window.speechSynthesis.speak(speech);
-    //  chatareamain.appendChild(showRightAnswerchatbotmsg(speech.text));
-    //window.speechSynthesis.speak(speech);
-    //chatareamain.appendChild(chatRoboSujesun(speech.text));
-
+   
+    return;
 }
+
 function loopQuestion(objectArray, z) {
     console.log(objectArray);
     let p = z;
-    //   speech.text=objectArray;
    let output = '';
-    speech.text = "Do you Asked     " + objectArray + " Yes Or No ?"
-//    window.speechSynthesis.speak(speech);
-//    output += `<div class="chatarea-inner chatbot">Do you Asked ${objectArray} : Yes or No</div>`;
-//    chatareaouter.innerHTML += output;
-    console.log(" ++++++; " + objectArray);
-    return chatareaouter;
-    //  speech.text="Do you Asked,"+"  "+objectArray+"?" +"           " + "question No " + z + "     :Yes or No";
-
+    speech.text = "Did you Asked     " + objectArray + " Yes Or No ?";
+    return;
 
 }
 
@@ -946,7 +853,9 @@ function oneQuestionAnswer(rightAnswer) {
         chatareamain.appendChild(showusermsg(transcript));
         answerQuestBot(transcript, answer);
         againStart();
+
     }
+    return;
 }
 
 function answerQuestBot(yyy, answer) {
@@ -956,18 +865,19 @@ function answerQuestBot(yyy, answer) {
             window.speechSynthesis.speak(speech);
             chatareamain.appendChild(showchatbotmsg(speech.text));
             autoScroll();
-            break;
+            return;
         case 'no':
             speech.text="ask the question again";
             window.speechSynthesis.speak(speech);
             chatareamain.appendChild(showchatbotmsg(speech.text));
             autoScroll();
-            break;
+            return;
         default:
-            speech.text="sorry,I can't undestard your speech";
+            speech.text="sorry,I can't understanrd your speech";
             window.speechSynthesis.speak(speech);
             chatareamain.appendChild(showchatbotmsg(speech.text)); 
-            autoScroll();   
+            autoScroll(); 
+            
 
     }
     return;
@@ -989,56 +899,17 @@ function add(accumlator, a) {
 }
 
 
-/*
-function detectQuestion( lastobject){
-    let newArr = [...lastobject];
-
-//    const peraObject = new Array;
-  //  console.log(newArr);
- //   console.log(peraObject);
-  //  const keys = Object.keys(lastArray);
- //   const values = Object.values(keys);
-
-   /* for(var i=0;i<lastArray.length;i++){
-        console.log(lastArray[i]);
-    }
-
-*/
-/*    let sum10 = lastArray.set1.sum1;
-    let sum20 = lastArray.set2.sum2;
-    let sum30 = lastArray.set3.sum3;
-    let value = maxValue;
-    switch(value){
-        case sum10 :
-            console.log(lastArray.set1.questio1);
-            break  
-        case sum20 :
-            console.log(lastArray.set2.questio2);
-            break
-        case sum30 :
-            console.log(lastArray.set3.questio3);
-            break
-    }
-   
-}
-*/
-
-/*function chatRoboSujesun(){
-  
-    let output = '';
-    output += `<br><div class="chatarea-inner chatbot row"><div class="answer" type="button">YES</div> <div class="answer" type="button">NO</div></div>`;
-    chatareaouter.innerHTML += output;
-    return chatareaouter;
-
-}
-*/
 
 function againStart() {
+
     recognition.onresult = function (e) {
         let resultIndex = e.resultIndex;
         let transcript = e.results[resultIndex][0].transcript;
         chatareamain.appendChild(showusermsg(transcript));
         chatbotvoice(transcript);
         console.log(transcript);
+        recognition.stop();
+        
     }
+
 }

@@ -321,25 +321,53 @@
     display: inline-block;
 }
 
-/*
-
-@media screen and (max-width:700px){
+@media (min-width:280px)and (max-width:320px){
     .chat_bot{
-        width: 370px;
+        width: 277px;
         top:36px; 
         right: 0px;
     }
 
     .chat_bot header{
-        width: 367px;
+        width: 272px;
     }
 
     .scroll_div{
-        width: 361px;
+        width: 271px;
     }
 
     .chat_bot .footer{
-        width: 364px;
+        width: 271px;
+    }
+
+    .chat_bot button{
+        left: 30px;
+    }
+
+    .chat_bot_img{
+        right: 35px;
+        bottom: 8px;
+    }
+
+}
+
+@media (min-width:320px)and (max-width:360px){
+    .chat_bot{
+        width: 317px;
+        top:36px; 
+        right: 0px;
+    }
+
+    .chat_bot header{
+        width: 312px;
+    }
+
+    .scroll_div{
+        width: 308px;
+    }
+
+    .chat_bot .footer{
+        width: 312px;
     }
 
     .chat_bot button{
@@ -355,23 +383,24 @@
     
 }
 
-@media (min-width:700px) and (max-width:900px){
+
+@media (min-width:360px) and (max-width:375px){
     .chat_bot{
-        width: 370px;
+        width: 350px;
         top:36px; 
         right: 0px;
     }
 
     .chat_bot header{
-        width: 367px;
+        width: 346px;
     }
 
     .scroll_div{
-        width: 361px;
+        width: 340px;
     }
 
     .chat_bot .footer{
-        width: 364px;
+        width: 345px;
     }
 
     .chat_bot button{
@@ -387,23 +416,24 @@
     
 }
 
-@media (min-width:900px) and (max-width:1240px){
+
+@media (min-width:375px) and (max-width:400px){
     .chat_bot{
-        width: 370px;
+        width: 360px;
         top:36px; 
         right: 0px;
     }
 
     .chat_bot header{
-        width: 367px;
+        width: 356px;
     }
 
     .scroll_div{
-        width: 361px;
+        width: 350px;
     }
 
     .chat_bot .footer{
-        width: 364px;
+        width: 355px;
     }
 
     .chat_bot button{
@@ -417,6 +447,7 @@
 
 
 }
+/*
 @media only screen and (max-width: 375px) {
     /* For mobile phones: */
   /*  .chat_bot{
