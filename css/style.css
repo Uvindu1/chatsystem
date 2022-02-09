@@ -321,6 +321,54 @@
     display: inline-block;
 }
 
+
+    
+    
+    .dropdown .serchanswer{
+        float: left;
+        width: 60%;
+        margin: 5px 0;
+        position:relative; 
+    }
+    .dropdown dt { 
+        float: left;
+        width: 60%;
+
+    }
+    
+    .dropdown p, .dropdown p:visited { 
+        color:#2c2520; 
+        text-decoration:none; 
+        outline:none;
+    }
+    
+    
+    .dropdown dt p {
+        background:#e4dfcb url('http://www.jankoatwarpspeed.com/wp-content/uploads/examples/reinventing-drop-down/arrow.png') no-repeat scroll right center; 
+        display:block; 
+        padding-right:20px; 
+        padding-left: 5px;
+        border:1px solid #d4ca9a; 
+        width:150px;
+        cursor: pointer;
+    }
+
+    .dropdown .serchanswer p { 
+        background:#d6c78a none repeat scroll 0 0; 
+        border:1px solid #8a825c; 
+        color:#000; 
+        display:none;
+        left:10px; 
+        padding:5px 5px; 
+        position:absolute; 
+        top:2px; 
+        min-width:170px; 
+        list-style:none;
+    }
+
+    
+
+
 @media (min-width:280px)and (max-width:320px){
     .chat_bot{
         width: 277px;
