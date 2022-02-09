@@ -52,12 +52,12 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = new SpeechRecognition();
 const speech = new SpeechSynthesisUtterance();
 
-function buttonMsg(selectMsg,msgAnswer){
+function buttonMsg(selectMsg, msgAnswer) {
     console.log(selectMsg);
     console.log(msgAnswer);
     let output = '';
-    
- 
+
+
     output += `<dl id="sample" class="dropdown">
                     <dt class="question"><p>${selectMsg}</p></dt>
                     
@@ -68,13 +68,13 @@ function buttonMsg(selectMsg,msgAnswer){
                 </dl>`
 
     //chatareaouter.innerHTML += output;  
-    $('.chatarea-outer').append(output).promise().done(function(){
-        
-        
+    $('.chatarea-outer').append(output).promise().done(function () {
+
+
     });
-       
-    
-    return chatareaouter; 
+
+
+    return chatareaouter;
 }
 
 function showusermsg(usermsg) {
@@ -91,7 +91,7 @@ function showchatbotmsg(chatbotmsg) {
     return chatareaouter;
 }
 
-function autoScroll(){
+function autoScroll() {
     $(document).ready(function () {
         $('.scroll_div').animate({
             scrollTop: $('.scroll_div').get(0).scrollHeight
@@ -240,7 +240,7 @@ function chatbotvoice(message) {
         speech.text = finalresult;
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
-        
+
     }
     else if (message.includes('do I have to do all e-Tests at once')) {
         let finalresult = set22[2][Math.floor(Math.random() * set22[2].length)];
@@ -273,7 +273,7 @@ function chatbotvoice(message) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else if (message.includes('how to apply fit programme'||'how to register fit programme'||'how to apply programme'||'how to register programme')) {
+    else if (message.includes('how to apply fit programme' || 'how to register fit programme' || 'how to apply programme' || 'how to register programme')) {
         let finalresult = set2[2][Math.floor(Math.random() * set2[2].length)];
         speech.text = finalresult;
         window.speechSynthesis.speak(speech);
@@ -291,11 +291,11 @@ function chatbotvoice(message) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else{
+    else {
         selectAnswer(speech, userSpeech);
-        
+
     }
-    
+
 
     autoScroll();
 }
@@ -325,7 +325,7 @@ mic.addEventListener("click", function () {
 $(document).ready(() => {
     $(".chat_bot_img").click(() => {
         $(".chat_bot").slideToggle("slow");
-        
+
     })
 
 
@@ -337,16 +337,11 @@ function selectAnswer(speech, massge) {
     let userQuestions = massge;
     const userQuestionsArray = userQuestions.split(" ");
     const strLength = userQuestionsArray.length;
-    
-    if(strLength<4){
+
+    if (strLength < 4) {
         shoteText(userQuestions);
     }
-    else if (strLength  < 6) {
- /*       let i = 0;
-        let p = 0;
-        let loop;
- */     
-
+    else if (strLength < 6) {
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -363,7 +358,7 @@ function selectAnswer(speech, massge) {
             p++;
         }
         set2[0] = countArray.reduce(add, 0);
-        
+
         const Point = [set1[0], set2[0]];
         const maxPoint = Point.sort(function (a, b) {
             return b - a
@@ -387,20 +382,7 @@ function selectAnswer(speech, massge) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else if (strLength  < 9) {
- /*       let i = 0;
-        let p = 0;
-        let q = 0;
-        let r = 0;
-        let s = 0;
-        let t = 0;
-        let u = 0;
-        let v = 0;
-        let j = 0;
-        let k = 0;
-        let m = 0;
-        let loop;
-*/
+    else if (strLength < 9) {
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -513,24 +495,9 @@ function selectAnswer(speech, massge) {
         }
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
-        
-    }
-    else if (strLength  < 12) {
-/*        let i = 0;
-        let p = 0;
-        let q = 0;
-        let r = 0;
-        let s = 0;
-        let t = 0;
-        let u = 0;
-        let v = 0;
-        let j = 0;
-        let k = 0;
-        let m = 0;
-        let a = 0;
-        let loop;
-*/
 
+    }
+    else if (strLength < 12) {
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -651,11 +618,7 @@ function selectAnswer(speech, massge) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else if (strLength  < 15) {
-/*          let i = 0;
-        let p = 0;
-        let loop;
-*/
+    else if (strLength < 15) {
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -696,10 +659,10 @@ function selectAnswer(speech, massge) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else if (strLength  < 18) {
-/*        let i = 0;
-        let loop;
-*/
+    else if (strLength < 18) {
+        /*        let i = 0;
+                let loop;
+        */
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -732,10 +695,7 @@ function selectAnswer(speech, massge) {
         window.speechSynthesis.speak(speech);
         chatareamain.appendChild(showchatbotmsg(speech.text));
     }
-    else if (18 <= strLength ) {
-/*        let i = 0;
-        let loop;
-*/ 
+    else if (18 <= strLength) {
         const countArray = [];
         for (j of userQuestionsArray) {
             let count = 0;
@@ -764,17 +724,17 @@ function selectAnswer(speech, massge) {
                     z++;
                 }
             }
-        }     
+        }
         window.speechSynthesis.speak(speech);
-        chatareamain.appendChild(showchatbotmsg(speech.text));   
-    }   
+        chatareamain.appendChild(showchatbotmsg(speech.text));
+    }
     return;
 }
 
 function loopQuestion(objectArray, z) {
     console.log(objectArray);
     let p = z;
-   let output = '';
+    let output = '';
     speech.text = "Did you Asked     " + objectArray + " Yes Or No ?";
     return;
 }
@@ -803,16 +763,16 @@ function answerQuestBot(yyy, answer) {
             autoScroll();
             return;
         case 'no':
-            speech.text="ask the question again";
+            speech.text = "ask the question again";
             window.speechSynthesis.speak(speech);
             chatareamain.appendChild(showchatbotmsg(speech.text));
             autoScroll();
             return;
         default:
-            speech.text="sorry,I can't understanrd your speech";
+            speech.text = "sorry,I can't understanrd your speech";
             window.speechSynthesis.speak(speech);
-            chatareamain.appendChild(showchatbotmsg(speech.text)); 
-            autoScroll(); 
+            chatareamain.appendChild(showchatbotmsg(speech.text));
+            autoScroll();
     }
     return;
 }
@@ -842,80 +802,94 @@ function againStart() {
         chatareamain.appendChild(showusermsg(transcript));
         chatbotvoice(transcript);
         recognition.stop();
-        
+
     }
 
 }
 
-function shoteText(userQuestions){
-    
-//    let subMain = new Array();
-    let keyWord = new Array('apply', 'register', 'certificate', 'learn', 'online', 'course', 'practical', 'exam', 'details', 'syllabus', 'learn', 'repeat');
-    for(var f=0;f<keyWord.length; f++){
+function shoteText(userQuestions) {
+    let keyWord = new Array('apply', 'register', 'certificate', 'learn', 'online', 'course', 'practical', 'exam', 'details', 'syllabus', 'repeat');
+    for (var f = 0; f < keyWord.length; f++) {
         var wordCount = stringSearch(userQuestions, keyWord[f]);
-        if(wordCount){
-            subMain = sutableSerach(f)  
-            var returnArray = arrayUnion(subMain);         
-        }   
-    
+        if (wordCount) {
+            subMain = sutableSerach(f)
+            var returnArray = arrayUnion(subMain);
+        }
+
     }
-    if(typeof(returnArray)== "object"){
+    if (typeof (returnArray) == "object") {
         showQuction(returnArray);
     }
-    else{
-        speech.text="this is text massage";
+    else {
+        speech.text = "sorry, have not idea";
         window.speechSynthesis.speak(speech);
-        chatareamain.appendChild(showchatbotmsg(speech.text)); 
+        chatareamain.appendChild(showchatbotmsg(speech.text));
     }
 
-    
+
 }
 
-function sutableSerach(passCount){
-    
-    switch(passCount) {
+function sutableSerach(passCount) {
+
+    switch (passCount) {
         case 0:
             subMain = [set2]
-          return subMain;
+            return subMain;
         case 1:
             subMain = [set2, set13, set15, set16, set25, set28]
-          return subMain;
+            return subMain;
         case 2:
             subMain = [set3, set14, set16, set21, set23]
-          return subMain;
+            return subMain;
+        case 3:
+            subMain = [set7,set28]
+            return subMain;
+        case 4:
+            subMain = [set8, set10]
+            return subMain;
+        case 5:
+            subMain = [set8, set10, set27, set23]
+            return subMain;
+        case 6:
+            subMain = [set9, set26]
+            return subMain;
+        case 7:
+            subMain = [set11, set29]
+            return subMain;
+        case 8:
+            subMain = [set17]
+            return subMain;
+        case 9:
+            subMain = [set18, set29]
+            return subMain;
+        case 10:
+            subMain = [set29]
+            return subMain;
         default:
-          // code block
-      }
+        // code block
+    }
     return subMain;
 }
 
-function arrayUnion(subMain){
+function arrayUnion(subMain) {
     let temp = new Array();
     let union = [...new Set([...temp, ...subMain])];
     temp = union;
-    return temp; 
+    return temp;
 }
 
-function showQuction(returnArray){
-    for(var w = 0; w < returnArray.length; w++){
+function showQuction(returnArray) {
+    for (var w = 0; w < returnArray.length; w++) {
         var Quctions = returnArray[w][1];
         var Answer = returnArray[w][2];
-        buttonMsg(Quctions,Answer)
+        buttonMsg(Quctions, Answer)
     }
-} 
+}
 
-
-
-/*$(".dropdown img.flag").addClass("flagvisibility");
-$(".dropdown dt a").click(function() {
-    $(".dropdown dd p").toggle();
-});
-*/
 $(document).ready(() => {
-    $(".chatarea-outer").on('click','.dropdown dt p',function(){
-        console.log("aaaaaaa");
+    $(".chatarea-outer").on('click', '.dropdown dt p', function () {
         var value = $(this).parent().parent().children().children();
-       $(value[1]).slideToggle("slow");
-       autoScroll();
-   })
+        $(value[1]).slideToggle("slow");
+        autoScroll();
+    })
 })
